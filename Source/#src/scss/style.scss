@@ -1,0 +1,588 @@
+@import "nullstyle";
+@import "mixin";
+@import "fonts";
+
+body {
+  width: 100%;
+  background-color: rgba(48, 56, 92, 0.5);
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+}
+._anim-items {
+  opacity: 0;
+  transform: translate(0px, 60%);
+  transition: all 0.8s ease 0s;
+}
+._anim-items._active {
+  opacity: 1;
+  transform: translate(0px, 0px);
+  transition: all 0.8s ease 0s;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  align-items: center;
+  margin: 40px 120px 0 120px;
+  &__logo {
+    flex-basis: 160px;
+  }
+  &__navigation {
+    flex: 1 1 auto;
+  }
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    height: 70px;
+    margin: 0px 15px 0 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+}
+.logo {
+  &__img {
+    height: 100%;
+    width: 100%;
+  }
+  @include adaptiv-value(width, 160, 90, 1);
+  @media (max-width: 1000px) {
+    padding-top: 20px;
+    @include adaptiv-value(flex-basis, 35, 20, 1);
+  }
+}
+.navigation {
+  @include adaptiv-value(font-size, 20, 15, 1);
+  &__list {
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__item {
+    height: 20px;
+    white-space: nowrap;
+  }
+  &__link {
+    display: inline-block;
+    padding: 5px 25px;
+    text-decoration: none;
+    color: #fff;
+    @include adaptiv-value(font-size, 18, 14, 1);
+    &:hover {
+      text-decoration: underline;
+    }
+    &:active {
+      color: gray;
+    }
+    @media (max-width: 1000px) {
+      position: relative;
+      z-index: 3;
+      margin: 12px 10px 0 10px;
+      padding: 5px 10px;
+    }
+  }
+}
+
+.main {
+  position: relative;
+  @include adaptiv-value(padding-left, 120, 15, 1);
+  @include adaptiv-value(padding-top, 150, 90, 1);
+  @include adaptiv-value(padding-right, 120, 30, 1);
+  height: calc(100vh - 70px);
+  @include adaptiv-value(min-height, 900, 500, 1);
+
+  &__background {
+    position: absolute;
+    top: -70px;
+    left: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100vh;
+    @include adaptiv-value(min-height, 1000, 600, 1);
+    background: url("@img/background.jpg") 0 0 / cover no-repeat;
+    @media (max-width: 1500px) {
+      background: url("@img/background.jpg") top center/ auto 100% no-repeat;
+    }
+  }
+  &__intro {
+    display: block;
+    width: 680px;
+    font-weight: bold;
+    @include adaptiv-value(font-size, 70, 26, 1);
+    @include adaptiv-value(line-height, 105, 35, 1);
+    @include adaptiv-value(margin-bottom, 35, 10, 1);
+    @include adaptiv-value(width, 680, 230, 1);
+    text-shadow: 2px 2px 2px #000;
+
+    transform: translate(0px, 20%);
+  }
+  &__title {
+    display: block;
+    @include adaptiv-value(width, 680, 165, 1);
+    @include adaptiv-value(font-size, 24, 14, 1);
+    @include adaptiv-value(line-height, 30, 17, 1);
+  }
+  &__links {
+    @include adaptiv-value(width, 590, 200, 1);
+    height: 75px;
+  }
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 100%;
+  }
+  @media (max-width: 1500px) {
+    &__next {
+      display: block;
+      position: absolute;
+      transform: rotate(90deg);
+      top: calc(100% - 55px);
+      right: calc(50% - 15px);
+      width: 30px;
+      height: 30px;
+      background: url(@img/arrow.svg) 50% 50% no-repeat;
+    }
+  }
+}
+.links {
+  display: flex;
+  justify-content: space-between;
+  margin: 70px 0 30px 0;
+  @media (max-width: 1500px) {
+    height: 82px;
+    margin: 20px 0 15px 0;
+    flex-direction: column;
+  }
+  &__button {
+    display: block;
+    padding-top: 27px;
+    @media (max-width: 1500px) {
+      @include adaptiv-value(padding-top, 18, 16, 1);
+    }
+    @include adaptiv-value(width, 307, 185, 1);
+    @include adaptiv-value(height, 75, 45, 1);
+    @include adaptiv-value(font-size, 20, 12, 1);
+    background-color: #efc224;
+    border-radius: 36px;
+    font-weight: 600;
+    text-align: center;
+    color: #362e2e;
+    &:hover {
+      text-decoration: underline;
+    }
+    &:active {
+      color: #000;
+      transform: translateY(1px);
+    }
+  }
+  &__video {
+    display: block;
+    position: relative;
+    height: 75px;
+    width: 110px;
+    font-size: 16px;
+    line-height: 26px;
+    color: #a1a8b5;
+    &::before {
+      content: url("@img/video.svg");
+      position: absolute;
+      left: -100px;
+    }
+    &:hover {
+      color: #fff;
+    }
+    @media (max-width: 1500px) {
+      height: 24px;
+      @include adaptiv-value(width, 300, 74, 1);
+      @include adaptiv-value(font-size, 16, 10, 1);
+      line-height: 16px;
+      color: #fff;
+      text-shadow: 1px 1px 1px #000;
+      margin: 12px 0 0 40px;
+      &::before {
+        content: url("@img/video_mobile.svg");
+        position: absolute;
+        left: -40px;
+      }
+    }
+  }
+}
+.socials {
+  height: 56px;
+  @include adaptiv-value(width, 211, 150, 1);
+  width: 211px;
+  margin-bottom: 30px;
+  @include adaptiv-value(margin-top, 115, 30, 1);
+  &__text {
+    @include adaptiv-value(font-size, 14, 10, 1);
+    letter-spacing: 0.01em;
+  }
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    height: 22px;
+    margin-top: 12px;
+    li {
+      height: 22px;
+      width: 22px;
+      &:hover {
+        transition-duration: 0.3s;
+        transform: scale(1.2, 1.2);
+      }
+      a {
+        display: block;
+        height: 22px;
+        width: 22px;
+      }
+    }
+    li:nth-of-type(1) {
+      background: url("@img/social__youtube.svg") center no-repeat;
+    }
+    li:nth-of-type(2) {
+      background: url("@img/social__facebook.svg") center no-repeat;
+    }
+    li:nth-of-type(3) {
+      background: url("@img/social__twitter.svg") center no-repeat;
+    }
+    li:nth-of-type(4) {
+      background: url("@img/social__vk.svg") center no-repeat;
+    }
+  }
+}
+.places {
+  &__list {
+    display: flex;
+    a:first-of-type {
+      margin-left: 0;
+    }
+    :nth-child(1) a {
+      background: url("@img/place_1.png") center no-repeat;
+    }
+    :nth-child(2) a {
+      background: url("@img/place_2.png") center no-repeat;
+    }
+    :nth-child(3) a {
+      background: url("@img/place_3.png") center no-repeat;
+    }
+  }
+  &__item {
+    display: flex;
+    align-items: flex-end;
+    padding: 0 110px 25px 25px;
+
+    height: 200px;
+    width: 285px;
+    margin: 0 15px;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    align-items: bottom;
+  }
+  @media (max-width: 1500px) {
+    display: none;
+  }
+}
+
+.example {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  @include adaptiv-value(padding, 160, 16, 1);
+  background-color: #fff;
+  color: #000;
+  &__place {
+    @include adaptiv-value(width, 830, 288, 0);
+    @include adaptiv-value(height, 470, 160, 0);
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+  }
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include adaptiv-value(width, 530, 287, 0);
+    @media (max-width: 1500px) {
+      @include adaptiv-value(width, 800, 287, 0);
+    }
+  }
+  &__title {
+    font-family: Playfair Display;
+    font-weight: bold;
+    @include adaptiv-value(font-size, 40, 18, 1);
+    @include adaptiv-value(line-height, 55, 24, 1);
+    @media (max-width: 1500px) {
+      margin: 15px 0;
+    }
+  }
+  &__subtitle {
+    margin: 29px 0 50px 0;
+    @include adaptiv-value(font-size, 18, 14, 1);
+    @include adaptiv-value(line-height, 33, 11, 1);
+    text-align: justify;
+    @media (max-width: 1500px) {
+      margin: 0 0 15px 0;
+    }
+  }
+  &__button {
+    display: block;
+    padding-top: 24px;
+    @media (max-width: 1500px) {
+      @include adaptiv-value(padding-top, 23, 5, 1);
+    }
+    @include adaptiv-value(width, 270, 160, 1);
+    @include adaptiv-value(height, 75, 34, 1);
+    @include adaptiv-value(font-size, 20, 10, 1);
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;
+    color: #efc224;
+    background-color: #fff;
+    border: #efc224 1px solid;
+    border-radius: 40px;
+    @media (max-width: 1500px) {
+      align-self: center;
+      letter-spacing: 0.04em;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+    &:active {
+      color: #efc224;
+      transform: translateY(1px);
+    }
+  }
+  &_1 {
+    &__place {
+      margin-right: 40px;
+      background: url(@img/example_1.png) 0 0 / cover no-repeat;
+      border-radius: 10px;
+    }
+  }
+  &_2 {
+    flex-direction: row-reverse;
+    &__place {
+      margin-left: 40px;
+      background: url(@img/example_2.png) 0 0 / cover no-repeat;
+      border-radius: 10px;
+    }
+  }
+  @media (max-width: 1500px) {
+    flex-direction: column;
+    &_place {
+      margin: 0;
+    }
+  }
+}
+.example_place {
+  @include adaptiv-value(padding, 40, 14, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &__top {
+    &_1 {
+      font-family: Playfair Display;
+      font-weight: bold;
+      @include adaptiv-value(font-size, 24, 18, 0);
+      @include adaptiv-value(line-height, 30, 24, 0);
+    }
+    &_2 {
+      @include adaptiv-value(font-size, 20, 10, 0);
+      @include adaptiv-value(line-height, 30, 12, 0);
+    }
+  }
+  &__description {
+    @include adaptiv-value(width, 350, 160, 0);
+    font-weight: 400;
+    @include adaptiv-value(font-size, 20, 13, 0);
+    @include adaptiv-value(line-height, 30, 17, 0);
+    position: relative;
+    color: #fff;
+  }
+  &__description::after {
+    content: url(@img/arrow.svg);
+    position: absolute;
+    @include adaptiv-value(top, 40, 15, 0);
+    @include adaptiv-value(right, -400, -90, 0);
+  }
+}
+
+.feedback {
+  width: 100%;
+  padding: 50px 15px 150px 0;
+  @include adaptiv-value(padding-left, 828, 15, 0);
+  background: url(@img/feedback.jpg) center / cover no-repeat;
+  @media (max-width: 1250px) {
+    padding: 15px;
+    margin: 0 auto;
+    background: url(@img/feedback.jpg) right bottom no-repeat;
+  }
+  color: #000;
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    @include adaptiv-value(width, 690, 287, 0);
+    @media (max-width: 1500px) {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+  &__info {
+    flex: 0 0;
+    @include adaptiv-value(flex-basis, 330, 137, 1);
+    margin-right: 16px;
+  }
+  &__title {
+    font-family: Playfair Display;
+    font-weight: bold;
+    @include adaptiv-value(font-size, 40, 18, 1);
+    @include adaptiv-value(line-height, 55, 24, 1);
+  }
+  &__subtitle {
+    @include adaptiv-value(width, 195, 137, 1);
+    margin-top: 30px;
+    @include adaptiv-value(font-size, 18, 14, 1);
+    @include adaptiv-value(line-height, 33, 17, 1);
+    text-align: justify;
+  }
+
+  &__input {
+    @include adaptiv-value(width, 265, 136, 1);
+    @include adaptiv-value(height, 75, 24, 1);
+    @include adaptiv-value(padding-left, 30, 15, 1);
+    @include adaptiv-value(padding-right, 30, 15, 1);
+    border: #dadfe3 1px solid;
+    border-radius: 40px;
+    font-weight: 600;
+    @include adaptiv-value(font-size, 20, 10, 1);
+    line-height: 24px;
+    //padding: 0 30px;
+    &::placeholder {
+      color: #a4bbcb;
+    }
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__name {
+    @include adaptiv-value(margin-bottom, 20, 7, 1);
+  }
+  &__number {
+    @include adaptiv-value(margin-bottom, 20, 12, 1);
+  }
+  &__button {
+    @include adaptiv-value(width, 265, 136, 1);
+    @include adaptiv-value(height, 75, 28, 1);
+    background-color: #efc224;
+    border-radius: 40px;
+    font-weight: 600;
+    @include adaptiv-value(font-size, 20, 10, 1);
+    line-height: 24px;
+    margin-bottom: 10px;
+    &:hover {
+      text-decoration: underline;
+    }
+    &:active {
+      color: #000;
+      transform: translateY(1px);
+    }
+  }
+  &__ppd_1,
+  &__ppd_2 {
+    @include adaptiv-value(width, 214, 136, 1);
+    font-size: 11px;
+    @include adaptiv-value(line-height, 18, 12, 1);
+    text-align: justify;
+    a {
+      color: #957b20;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  &__ppd_1 {
+    @media (max-width: 700px) {
+      display: none;
+    }
+  }
+  &__ppd_2 {
+    @include adaptiv-value(width, 720, 287, 0);
+    margin: 13px auto 0 auto;
+    @media (min-width: 700px) {
+      display: none;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e1e4e9;
+  @include adaptiv-value(height, 180, 140, 1);
+  @include adaptiv-value(padding-left, 120, 16, 1);
+  @include adaptiv-value(padding-right, 120, 16, 1);
+  &__logo {
+    margin: 0;
+    @include adaptiv-value(margin-right, 110, 0, 1);
+    padding: 0;
+    @media (max-width: 1000px) {
+      order: 4;
+      margin: 0 0 9px 0;
+    }
+  }
+  &__links {
+    display: flex;
+    flex: 1 1;
+    justify-content: center;
+    align-items: center;
+  }
+  &__links_item {
+    display: block;
+    color: #7997a9;
+    @include adaptiv-value(width, 220, 137, 1);
+    @include adaptiv-value(font-size, 14, 10, 1);
+    @include adaptiv-value(line-height, 17, 12, 1);
+    margin: 0 15px;
+    @media (max-width: 1000px) {
+      margin: 15px 0 0 0;
+      padding: 0;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__socials {
+    flex-basis: 211px;
+    @media (max-width: 1000px) {
+      @include adaptiv-value(width, 450, 211, 1);
+      flex-direction: row;
+      justify-self: space-between;
+      flex-basis: 40px;
+    }
+    .link__youtube {
+      background: url("@img/social__youtube_black.svg") center no-repeat;
+    }
+    .link__facebook {
+      background: url("@img/social__facebook_black.svg") center no-repeat;
+    }
+    .link__twitter {
+      background: url("@img/social__twitter_black.svg") center no-repeat;
+    }
+    .link__vk {
+      background: url("@img/social__vk_black.svg") center no-repeat;
+    }
+  }
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
+}
+
+//font-family: 'Montserrat', sans-serif;
+//font-family: 'Playfair Display', serif;
