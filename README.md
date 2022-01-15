@@ -2,7 +2,7 @@
 
 Responsive landing page about tourism with a simple animation.
 
-# About
+## About
 
 The project created from two parts: 
 * Source: Folder with unpacked HTML,Sass/Scss,JS,Gulp files.
