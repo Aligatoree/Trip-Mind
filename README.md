@@ -10,7 +10,7 @@ The project created from two parts:
 
 ## 🚀 How to run 
 
-To open the site, you need to run the index.html file from the Trip&Mind folder
+To open the site, you need to run the index.html file from the Trip&Mind folder or just click [here](https://aligatoree.github.io/Trip-Mind/)
 
 ## 🔧 Built With
 
